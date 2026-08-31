@@ -1,0 +1,27 @@
+import pandas as pd
+from sklearn.naive_bayes import GaussianNB
+
+data = {
+    'Income': [25, 30, 50, 70, 90, 40, 80, 100],
+    'Age': [25, 30, 35, 40, 45, 28, 38, 50],
+    'LoanAmount': [10, 15, 20, 25, 30, 12, 22, 35],
+    'LoanApproved': [0, 0, 1, 1, 1, 0, 1, 1]
+}
+
+df = pd.DataFrame(data)
+
+X = df[['Income', 'Age', 'LoanAmount']]
+y = df['LoanApproved']
+
+model = GaussianNB()
+model.fit(X, y)
+
+prediction = model.predict([[60, 36, 20]])
+
+if prediction[0] == 1:
+    print("Loan Status: Approved")
+else:
+    print("Loan Status: Not Approved")
+
+
+print("K.Keerthana Sai reg no:192425143")
